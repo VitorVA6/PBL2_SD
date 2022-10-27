@@ -1,4 +1,4 @@
-.global write
+.global write_lcd
 
 .macro setLvl pin, lvl      @Recebe como parâmero as informações do pino e qual nível lógica colocar no pino
     mov r0, #40             @Move #40 para R0 (40 é o offset do clear register)
@@ -105,7 +105,7 @@
     swi 0               @Executa a Syscall
 .endm
 
-write:
+write_lcd:
 
     mov r10, r0                     
 
