@@ -61,7 +61,7 @@ void tx_command(unsigned char com, unsigned char addr){
     }
 }
 
-void rx_command(){
+unsigned char rx_command(){
     unsigned char rx_buffer[100];
     int rx_length = read(uart0_file, (void*)rx_buffer, 100);
     
@@ -72,9 +72,51 @@ void rx_command(){
         printf("Nenhum dado disponível\n");
     }
     else{
+        clear();
         rx_buffer[rx_length] = '\0';
-        write_string(rx_buffer);
-        printf("%s", rx_buffer);
+        if (rx_buffer[0] == 0x01){
+            write_string("Voltage:");
+            rx_buffer[0] = ' ';
+            rx_buffer[strlen(rx_buffer)-1] = ' ';
+            rx_buffer[strlen(rx_buffer)-2] = 'V';
+            write_string(rx_buffer);
+        }
+        else if (rx_buffer[0] == 0x02){
+            if (rx_buffer[1] == 0x01){
+                write_string("Sensor: HIGH");
+            }
+            else{
+                write_string("Sensor: LOW");
+            }
+        }
+        else if (rx_buffer[0] == 0x03){
+            if (rx_buffer[1] == 0x01){
+                write_string("LED Status: OFF");
+            }
+            else{
+                write_string("LED Status: ON");
+            }
+        }
+    }
+}
+
+unsigned char get_addr(){
+    int sensor = 0;
+    printf("\n\nSelect a sensor: \n");
+    printf("1 -> Sensor 1 (PIN D0): \n");
+    printf("2 -> Sensor 2 (PIN D1): \n");
+    scanf("%d", &sensor);
+    switch(sensor){
+        case 1:{
+            return 0x20;
+        }
+        case 2:{
+            return 0x21;
+        }
+        default:{
+            printf("Invalid sensor\n\n");
+            break;
+        }
     }
 }
 
@@ -87,7 +129,7 @@ int main(int argc, const char * argv[]){
     int infinite = 1;
     
     int command = 0;
-    int address = 0;
+    unsigned char address = 0;
     
     while(infinite){
         printf("Wellcome to Sensor Manager \n");
@@ -95,7 +137,7 @@ int main(int argc, const char * argv[]){
         printf("1 -> NodeMCU status;\n");
         printf("2 -> Analogic sensor status; \n");
         printf("3 -> Digital sensor status;\n");
-        printf("4 -> Turn on Led;\n");
+        printf("4 -> Turn on/off Led;\n");
         printf("5 -> exit;\n\n");
         scanf("%d", &command);
         
@@ -105,26 +147,27 @@ int main(int argc, const char * argv[]){
         
         switch(command){
             case 1:{
-                tx_command('a', 'b');
-                sleep(1);
+                tx_command(0x03, 0x00);
+                sleep(2);
                 rx_command();
                 break;
             }
             case 2:{
-                tx_command('c', 'd');
-                sleep(1);
+                tx_command(0x04, 0x00);
+                sleep(2);
                 rx_command();
                 break;
             }
             case 3:{
-                tx_command('e', 'f');
-                sleep(1);
+                address = get_addr();
+                tx_command(0x05, address);
+                sleep(2);
                 rx_command();
                 break;
             }
             case 4:{
-                tx_command('g', 'h');
-                sleep(1);
+                tx_command(0x06, 0x00);
+                sleep(2);
                 rx_command();
                 break;
             }
