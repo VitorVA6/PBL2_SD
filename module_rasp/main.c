@@ -84,8 +84,11 @@ unsigned char rx_command(){
             if (rx_buffer[1] == 0x01){              //Verifica se o segundo byte do buffer indica nível lógico alto
                 write_string("Sensor: HIGH");       //Se sim, escreve na LCD "HIGH"
             }
-            else{
+            else if(rx_buffer[1] == 0x00){
                 write_string("Sensor: LOW");        //Se não, escreve "LOW"
+            }
+            else{
+                write_string("Sensor: --");
             }
         }
         else if (rx_buffer[0] == 0x03){             //Verifica se o comando de resposta é o código da LED
@@ -97,10 +100,10 @@ unsigned char rx_command(){
             }
         }
         else if(rx_buffer[0] == 0x1F){
-            write_string("NodeMCU: OFF")
+            write_string("NodeMCU: OFF");
         }
         else if(rx_buffer[0] == 0x00){
-            write_string("NodeMCU: ON")
+            write_string("NodeMCU: ON");
         }
     }
 }
@@ -144,7 +147,7 @@ int main(int argc, const char * argv[]){
         printf("2 -> Analogic sensor status; \n");
         printf("3 -> Digital sensor status;\n");
         printf("4 -> Turn on/off Led;\n");
-        printf("5 -> Enable/Disable NodeMCU")
+        printf("5 -> Enable/Disable NodeMCU\n");  
         printf("6 -> exit;\n\n");
         scanf("%d", &command);
         

@@ -109,20 +109,29 @@ void loop() {
       }
     }
     if(com == 0x04){      //Obtem o valor da entrada analógica A0 e envia para o SBC
-      comAnswer = 0x01;   
-      voltage = analogRead(A0)*(3.3/1023.0);    //Converte o intervalo da entrada analógica que varia de 0 a 1023, para unidades de volts (de 0 a 3.3 volts)
-      Serial.write(comAnswer);        //Envia para o SBC o byte de resposta especificado no protoco para status de sensor analógico e o valor do sensor analógico
-      Serial.println(voltage);
+      if(nodeStatus == 1){
+        comAnswer = 0x01;   
+        voltage = analogRead(A0)*(3.3/1023.0);    //Converte o intervalo da entrada analógica que varia de 0 a 1023, para unidades de volts (de 0 a 3.3 volts)
+        Serial.write(comAnswer);        //Envia para o SBC o byte de resposta especificado no protoco para status de sensor analógico e o valor do sensor analógico
+        Serial.println(voltage);
+      }
+      else{
+        Serial.write(comAnswer);        //Envia para o SBC o byte de resposta especificado no protoco para status de sensor analógico e o valor do sensor analógico
+        Serial.println("--");
+      }
     }
     if(com == 0x05){    //Obtém o valor de uma das entradas digitais
       comAnswer = 0x02;
       switch(addr){     //Verifica qual é o sensor desejado, a partir do endereço enviado pelo SBC
         case 0x20:{
-          if(digitalRead(D0) == 0){     //Faz a leitura do pino especificado
+          if(digitalRead(D0)==0 && nodeStatus == 1){     //Faz a leitura do pino especificado
             lvlD0 = 0x00;
           }
-          else{
+          else if(digitalRead(D0)==1 && nodeStatus == 1){
             lvlD0 = 0x01;
+          }
+          else{
+            lvlD0 = 0x02;
           }
           Serial.write(comAnswer);    //Envia para o SBC o byte de resposta especificado no protoco para status de sensor digital e o valor do sensor digital
           Serial.write(lvlD0);
@@ -130,11 +139,14 @@ void loop() {
         }
       
         case 0x21:{
-          if(digitalRead(D1) == 0){
+          if(digitalRead(D1)==0 && nodeStatus == 1){
             lvlD1 = 0x00;
           }
-          else{
+          else if(digitalRead(D1)==1 && nodeStatus == 1){
             lvlD1 = 0x01;
+          }
+          else{
+            lvlD1 = 0x02;
           }
           Serial.write(comAnswer);    
           Serial.write(lvlD1);
