@@ -1,17 +1,13 @@
-# PBL2_SD
-
 <div id="inicio">
     <h1>PROBLEMA 2 TEC 499 Sitemas Digitas</h1>
-	<p align="justify"> 
-		Para o problema 2 de Sistemas Digitais...	
 </div>
 <div id="sumario">
     <h1>Sumário</h1>
 	<ul>
         	<li><a href="#equipe"> <b>Equipe de Desenvolvimento</b></li>
-          <li><a href="#inicio"> <b>Introdução</b></li>
-		      <li><a href="#Metodologia e tecnicas usadas"> <b>Recursos Utilizados</b> </a></li>
-        	<li><a href="#resultados-obtidos"> <b>Sistema proposto para o problema</b> </a> </li>
+          	<li><a href="#inicio"> <b>Introdução</b></li>
+		<li><a href="#recursos-utilizados"> <b>Recursos Utilizados</b> </a></li>
+        	<li><a href="#sistema-proposto"> <b>Sistema proposto para o problema</b> </a> </li>
         	<li><a href="#limitacoes-solucao"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
           <li><a href="#limitacoes-solucao"> <b>Descrição e análise dos testes e simulações realizadas.;</b> </a> </li>
 		      <li><a href="#anexos"> <b>Anexos</b> </a></li>
@@ -33,43 +29,29 @@
 
 
 <div id="Introdução">
-	<h1> Introdução </h1>
-	<ul>
-	<h2>Ferramentas usadas no projeto.</h2>
-        <li>Raspberry Pi Zero W: Ferramenta onde o sistema operacional em que o solução para o problema 1 foi feito e testado.</li>
-	<ul>
-	<li>Anexos ao Rapsberry também usamos os seguintes periféricos: Display LCD: HD44780U (LCD-II); Botão tipo push-button.</li>
-	</ul>
-	<li>Visual Studio Code: IDE utilizada para alteração, confecção e manuseio do código em Assembly.</li>
-	<li>CPUlator: Software utilizado para fazer os testes do código fora do ambiente de laboratório.</li>
-	</ul>
-	<ul>
-	<h3> Características da Raspberry PI Zero W utilizada:</h3>
-	</ul>
-	<ul>
-	<p>
-		<li>Chip Broadcom BCM2835, com processador ARM1176JZF-S 1GHz single core;</li>
-		<li>O processador conta com arquitetura ARMv6.</li>
-		<li>512MB de memória LPDDR2 SDRAM;</li>
-	<p>
+     <h1> Introdução </h1>
+     <ul>
+	Para o problema 2, foi nos entregue o desafio de dar prosseguimento ao desenvolvimento do protótipo de um sistema digital baseado em um processador ARM, o próximo passo compreenderia então a implementação de um protótipo de sistema de sensoriamento genérico.
+	
+Visando a realização do mesmo, foi usada uma plataforma baseada no NodeMCU como pilar para a confecção das unidades de sensoriamento, visando a criação de um ecossisstema de Internet das Coisas (IoT).
+	
+Como tarefa tivemos que fazer um sistema que pudesse ser comandado por um Single Board Computer e que deveria ser capaz de controlar o acionamento de um conjunto variável de sensores, assim como monitorar o seu funcionamento de maneira automatizada. As operações de leitura deveriam ser representadas por um código para que o sistema embarcado na NodeMCU pudesse ser capaz de interpretá-los e realizá-los de maneira adequada, por meio da comunicação UART.
 	</ul>
 </div>
-<div id="como-executar">
+<div id="recursos-utilizados">
     <h1>Recursos utilizados</h1>
+    <ul>
+    A solução do problema foi desenvolvida para funcionar em uma Raspberry Pi Zero, utilizando como periférico de saída um display LCD Hitachi HD44780U (LCD-II) de 16x2. A Raspberry em questão possui arquitetura ARMv6 de 32bits.
+
+Este projeto também utiliza uma ESP8266 (NodeMCU) conectada a sensores de umidade e temperatura analógicos e digitais. Porém por limitações laboratoriais os sensores digitais são emulados por push buttons e o analógico por um potenciômetro.
+
+Para comunicação com os periféricos, tanto da NodeMCU quanto da Raspberry PI, foi utilizada a biblioteca --, enquanto que a utilização da UART ocorreu através dos comandos de controle e utilização oferecidos pela biblioteca TermIOs. Todos os códigos utilizados foram produzidos em linguagem C. Também foi necessária a utilização da bibliotca ArduinoOTA para possibilitar o carregamento de código na NodeMCU via Wifi.
+    </ul>
 </div>
- 
-<div id="resultados-obtidos">
-<h1>Metodologias e técnicas aplicadas para o projeto</h1>
-	<p> 
-	As requisições do projeto foram cumpridas com êxito por nossa equipe, sendo realizadas de forma satisfatória e testadas com o devido rigor. Nesta seção iremos detalhar como funciona o nosso projeto e quais testes foram necessários para termos um resultado competente aos nossos estudos. 
-	</p>
- </div>
 
-<div id="limitacoes-solucao">
+<div id="sistema-proposto">
     <h1>Sistema Proposto</h1> 
-    <h3>Contador limitado a apenas 8 digitos</h3>
-    U
-
+   
 </div>
 
 
