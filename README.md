@@ -49,6 +49,47 @@ Para comunicação com os periféricos, tanto da NodeMCU quanto da Raspberry PI,
     </ul>
 </div>
 
+
+<div id="como-executar">
+    <h1>Como executar o projeto</h1> 
+    <h3>Node MCU:</h3>
+    <ul>
+    Para tudo funcionar bem o ambiente deve-se estar minimamente preparado, com todos os recursos citados na sessão anterior em mãos em conjunto com os códigos presentes neste repositório. Além disso é necessário a insersão de alguns dados em linhas de código específicas, pois imaginando-se o cenário de upload via wifi o código presente nos trechos do ArduinoOTA devem ficar desse modo:
+    </ul>
+    
+    const char* ssid = "SSID-DA-REDE-A-SER-UTILIZADA";
+    const char* password = "SENHA-DA-REDE-A-SER-UTILIZADA";
+    
+    void setup() {
+	  Serial.begin(9600);
+	  Serial.println("Booting");
+	  WiFi.mode(WIFI_STA);
+	  WiFi.begin(ssid, password);
+	  while (WiFi.waitForConnectResult() != WL_CONNECTED) {
+	    Serial.println("Connection Failed! Rebooting...");
+	    delay(5000);
+	    ESP.restart();
+	  }
+
+	  ArduinoOTA.setHostname("ENDEREÇO-DA-ESP-A-SER-UTILIZADA");
+
+	   ArduinoOTA.onStart([]() {
+	    String type;
+	    if (ArduinoOTA.getCommand() == U_FLASH) {
+	      type = "sketch";
+	    } else { // U_FS
+	      type = "filesystem";
+	    }
+
+	  ArduinoOTA.begin();
+    
+<h3>Rapsberry PI:</h3>
+    <ul>
+    Para o Rapsberry PI primeiro deve-se haver o acesso a mesma, podendo ser preferencialmente através do SSH ou qualquer outro metodo disponível, após isso é necessário apenas: 
+    Carregar os arquivos do projeto, compilar e atráves do makefile linkar e executar atráves da execução de um make all.
+    </ul>
+   
+</div>
 <div id="sistema-proposto">
     <h1>Sistema Proposto</h1> 
    
