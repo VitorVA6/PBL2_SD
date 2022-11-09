@@ -128,7 +128,7 @@ Ilustração do sistema realizado em diagrama de blocos:
 </div>
 
 <div id="protocolo">
-<h1>Descrição do protocolo de comunicação desenvolvido;</h1>
+<h1>Descrição do protocolo de comunicação desenvolvido</h1>
 	<p>
 	Como protocolo de comunicação a ser desenvolvido, foram feitas 2 tabelas com o propósito de melhorar a descrição do protocolo em si, uma tabela será o protocolo da Rasp para a ESP e a segunda tabela sera da ESP para a Rasp.
 	Por propósito de esclarecimento, a tabela de protocolo de Rasp para a ESP pode também ser lida como Tabela de Requisições e a de ESP para Rasp como Tabela de Resposta. 
@@ -144,7 +144,7 @@ Ilustração do sistema realizado em diagrama de blocos:
 
 
 <div id="simulacao">
-<h1> Descrição e análise dos testes e simulações realizadas.</h1> 
+<h1> Descrição e análise dos testes e simulações realizadas</h1> 
 	<p>
 	Como primeiro teste do Problema 2, foi realizado um loopback, ou seja, a Raspberry recebe o mesmo dado que está enviando, o teste em questão tem como propósito verificar se o funcionamento da UART atendia aos padrões de qualidade do projeto ao receber corretamente um dado especificado. 
 	Com a garantia do resultado satisfatório do teste do loopback pudemos avançar para outros testes mais voltados aos resultados finais que o problema exigia, são eles: 
