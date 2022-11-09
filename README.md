@@ -45,16 +45,36 @@ Como tarefa tivemos que fazer um sistema que pudesse ser comandado por um Single
 
 Este projeto também utiliza uma ESP8266 (NodeMCU) conectada a sensores de umidade e temperatura analógicos e digitais. Porém por limitações laboratoriais os sensores digitais são emulados por push buttons e o analógico por um potenciômetro.
 
-Para comunicação com os periféricos, tanto da NodeMCU quanto da Raspberry PI, foi utilizada a biblioteca --, enquanto que a utilização da UART ocorreu através dos comandos de controle e utilização oferecidos pela biblioteca TermIOs. Todos os códigos utilizados foram produzidos em linguagem C. Também foi necessária a utilização da bibliotca ArduinoOTA para possibilitar o carregamento de código na NodeMCU via Wifi.
+Para comunicação com os periféricos, tanto da NodeMCU quanto da Raspberry PI, foi utilizada a biblioteca HardwareSerial.h, enquanto que a utilização da UART ocorreu através dos comandos de controle e utilização oferecidos pela biblioteca TermIOs. Todos os códigos utilizados foram produzidos em linguagem C. Também foi necessária a utilização da bibliotca ArduinoOTA para possibilitar o carregamento de código na NodeMCU via Wifi.
     </ul>
 </div>
 
 
 <div id="como-executar">
     <h1>Como executar o projeto</h1> 
-    <h3>Node MCU:</h3>
+    <h3>Rapsberry PI:</h3>
     <ul>
-    Para tudo funcionar bem o ambiente deve-se estar minimamente preparado, com todos os recursos citados na sessão anterior em mãos em conjunto com os códigos presentes neste repositório. Além disso é necessário a insersão de alguns dados em linhas de código específicas, pois imaginando-se o cenário de upload via wifi o código presente nos trechos do ArduinoOTA devem ficar desse modo:
+    Para iniciar a execução é necessário clonar o projeto máquina que será usada. Para isso segue o passo a passo:
+		
+	$ https://github.com/VitorVA6/PBL2_SD
+• Transfira os seguintes arquivos baixados para o Raspberry Pi Zero;
+
+	clear.s
+	writeLCD.s
+	initLCD.s
+	main.c
+	makefile
+	mapping.s
+
+• Por fim, execute os seguintes comandos:
+</ul>
+
+	$ make
+	$ sudo ./main
+  
+<h3>Node MCU:</h3>
+    <ul>
+    Para tudo funcionar bem o ambiente deve-se estar minimamente preparado, com todos os recursos citados na sessão de recursos utilizados em mãos em conjunto com os códigos presentes neste repositório. Além disso é necessário a insersão de alguns dados em linhas de código específicas, pois imaginando-se o cenário de upload via wifi o código presente nos trechos do ArduinoOTA devem ficar desse modo:
     </ul>
     
     const char* ssid = "SSID-DA-REDE-A-SER-UTILIZADA";
@@ -83,15 +103,11 @@ Para comunicação com os periféricos, tanto da NodeMCU quanto da Raspberry PI,
 
 	  ArduinoOTA.begin();
     
-<h3>Rapsberry PI:</h3>
-    <ul>
-    Para o Rapsberry PI primeiro deve-se haver o acesso a mesma, podendo ser preferencialmente através do SSH ou qualquer outro metodo disponível, após isso é necessário apenas: 
-    Carregar os arquivos do projeto, compilar e atráves do makefile linkar e executar atráves da execução de um make all.
-    </ul>
-   
 </div>
-<div id="sistema-proposto">
-    <h1>Sistema Proposto</h1> 
+<div id="desenvolvimento">
+    <h1>Desenvolvimento</h1> 
+    Primeiro será apresentado o fluxo do projeto e em seguida as implementações em cada um dos SBCs.
+    <h3>Fluxo de funcionamento do projeto</h3>
    
 </div>
 
