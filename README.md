@@ -5,8 +5,9 @@
     <h1>Sumário</h1>
 	<ul>
         	<li><a href="#equipe"> <b>Equipe de Desenvolvimento</b></li>
-          	<li><a href="#inicio"> <b>Introdução</b></li>
+          	<li><a href="#introducao"> <b>Introdução</b></li>
 		<li><a href="#recursos-utilizados"> <b>Recursos Utilizados</b> </a></li>
+		<li><a href="#usar"> <b>Como executar</b></li>
         	<li><a href="#desenvolvimento"> <b>Descrição em alto nível do sistema proposto</b> </a> </li>
         	<li><a href="#protocolo"> <b>Descrição do protocolo de comunicação desenvolvido;</b> </a> </li>
           <li><a href="#simulacao"> <b>Descrição e análise dos testes e simulações realizadas.;</b> </a> </li>
@@ -28,7 +29,7 @@
 
 
 
-<div id="Introdução">
+<div id="introducao">
      <h1> Introdução </h1>
      <ul>
 	Para o problema 2, foi nos entregue o desafio de dar prosseguimento ao desenvolvimento do protótipo de um sistema digital baseado em um processador ARM, o próximo passo compreenderia então a implementação de um protótipo de sistema de sensoriamento genérico.
@@ -50,7 +51,7 @@ Para comunicação com os periféricos, tanto da NodeMCU quanto da Raspberry PI,
 </div>
 
 
-<div id="como-executar">
+<div id="usar">
     <h1>Como executar o projeto</h1> 
     <h3>Rapsberry PI:</h3>
     <ul>
