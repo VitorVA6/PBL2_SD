@@ -17,6 +17,12 @@ const char* password = STAPSK;
 int nodeStatus = 1;     //Variável que controla o status de funcionamento dos sensores do NodeMCU
 unsigned char lvlD0 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D0
 unsigned char lvlD1 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D1
+unsigned char lvlD2 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D0
+unsigned char lvlD3 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D1
+unsigned char lvlD4 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D0
+unsigned char lvlD5 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D1
+unsigned char lvlD6 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D0
+unsigned char lvlD7 = 0x01;   //Variável que contém o comando de resposta (Segundo byte) para o status do botão do pino D1
 unsigned char statusLed = 0x00;   //Variável que contém o comando de resposta (Segundo byte) para o status da LED
 unsigned char comAnswer = 0x00;   //Variável que contem o comando de resposta geral (primeiro byte) de todas as requisições do SBC
 float voltage = 0;                //Variável que guarda o valor em volts, do pino A0
@@ -25,6 +31,12 @@ float voltage = 0;                //Variável que guarda o valor em volts, do pi
 void setup() {
   pinMode(D0, INPUT);  //Configura o pino D0 como INPUT
   pinMode(D1, INPUT);   //Configura o pino D1 como INPUT
+  pinMode(D2, INPUT);  //Configura o pino D0 como INPUT
+  pinMode(D3, INPUT);   //Configura o pino D1 como INPUT
+  pinMode(D4, INPUT);  //Configura o pino D0 como INPUT
+  pinMode(D5, INPUT);   //Configura o pino D1 como INPUT
+  pinMode(D6, INPUT);  //Configura o pino D0 como INPUT
+  pinMode(D7, INPUT);   //Configura o pino D1 como INPUT
   pinMode(LED_BUILTIN, OUTPUT); //Configura o pino da LED como OUTPUT
   pinMode(A0, INPUT);           //Configura o pino A0 como output
   
@@ -150,6 +162,96 @@ void loop() {
           }
           Serial.write(comAnswer);    
           Serial.write(lvlD1);
+          break;
+        }
+
+        case 0x22:{
+          if(digitalRead(D2)==0 && nodeStatus == 1){
+            lvlD2 = 0x00;
+          }
+          else if(digitalRead(D2)==1 && nodeStatus == 1){
+            lvlD2 = 0x01;
+          }
+          else{
+            lvlD2 = 0x02;
+          }
+          Serial.write(comAnswer);    
+          Serial.write(lvlD2);
+          break;
+        }
+
+        case 0x23:{
+          if(digitalRead(D3)==0 && nodeStatus == 1){
+            lvlD3 = 0x00;
+          }
+          else if(digitalRead(D3)==1 && nodeStatus == 1){
+            lvlD3 = 0x01;
+          }
+          else{
+            lvlD3 = 0x02;
+          }
+          Serial.write(comAnswer);    
+          Serial.write(lvlD3);
+          break;
+        }
+
+        case 0x24:{
+          if(digitalRead(D4)==0 && nodeStatus == 1){
+            lvlD4 = 0x00;
+          }
+          else if(digitalRead(D4)==1 && nodeStatus == 1){
+            lvlD4 = 0x01;
+          }
+          else{
+            lvlD4 = 0x02;
+          }
+          Serial.write(comAnswer);    
+          Serial.write(lvlD4);
+          break;
+        }
+
+        case 0x25:{
+          if(digitalRead(D5)==0 && nodeStatus == 1){
+            lvlD5 = 0x00;
+          }
+          else if(digitalRead(D5)==1 && nodeStatus == 1){
+            lvlD5 = 0x01;
+          }
+          else{
+            lvlD5 = 0x02;
+          }
+          Serial.write(comAnswer);    
+          Serial.write(lvlD5);
+          break;
+        }
+
+        case 0x26:{
+          if(digitalRead(D6)==0 && nodeStatus == 1){
+            lvlD6 = 0x00;
+          }
+          else if(digitalRead(D6)==1 && nodeStatus == 1){
+            lvlD6 = 0x01;
+          }
+          else{
+            lvlD6 = 0x02;
+          }
+          Serial.write(comAnswer);    
+          Serial.write(lvlD6);
+          break;
+        }
+
+        case 0x27:{
+          if(digitalRead(D7)==0 && nodeStatus == 1){
+            lvlD7 = 0x00;
+          }
+          else if(digitalRead(D7)==1 && nodeStatus == 1){
+            lvlD7 = 0x01;
+          }
+          else{
+            lvlD7 = 0x02;
+          }
+          Serial.write(comAnswer);    
+          Serial.write(lvlD7);
           break;
         }
       }

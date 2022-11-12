@@ -114,13 +114,37 @@ unsigned char get_addr(){
     printf("\n\nSelect a sensor: \n");
     printf("1 -> Sensor 1 (PIN D0): \n");
     printf("2 -> Sensor 2 (PIN D1): \n");
+    printf("3 -> Sensor 3 (PIN D2): \n");
+    printf("4 -> Sensor 4 (PIN D3): \n");
+    printf("5 -> Sensor 5 (PIN D4): \n");
+    printf("6 -> Sensor 6 (PIN D5): \n");
+    printf("7 -> Sensor 7 (PIN D6): \n");
+    printf("8 -> Sensor 8 (PIN D7): \n");
     scanf("%d", &sensor);
     switch(sensor){
         case 1:{
             return 0x20;  //Se usuário digitar '1', o endereço do sensor é o 0x20
         }
         case 2:{
-            return 0x21;  //Se usuário digitar '0', o endereço do sensor é o 0x21
+            return 0x21;  //Se usuário digitar '2', o endereço do sensor é o 0x21
+        }
+        case 3:{
+            return 0x22;  //Se usuário digitar '3', o endereço do sensor é o 0x22
+        }
+        case 4:{
+            return 0x23;  //Se usuário digitar '4', o endereço do sensor é o 0x23
+        }
+        case 5:{
+            return 0x24;  //Se usuário digitar '5', o endereço do sensor é o 0x24
+        }
+        case 6:{
+            return 0x25;  //Se usuário digitar '6', o endereço do sensor é o 0x25
+        }
+        case 7:{
+            return 0x26;  //Se usuário digitar '7', o endereço do sensor é o 0x26
+        }
+        case 8:{
+            return 0x27;  //Se usuário digitar '8', o endereço do sensor é o 0x27
         }
         default:{
             printf("Invalid sensor\n\n");
